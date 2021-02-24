@@ -29,3 +29,23 @@
 .grid-item {
   background-color: lightgrey;
 }
+
+.cycle-button {
+  margin: 1em;
+  background-color: white;
+  border: 3px solid black;
+  min-width: 15em;
+  min-height: 3em;
+  font-size: 2em;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+}
+
+.cycle-button:focus {
+  outline-color: white;
+}
+
+.cycle-button:active {
+  transform: scale(0.98);
+}
