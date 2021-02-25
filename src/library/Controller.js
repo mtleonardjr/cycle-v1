@@ -41,7 +41,7 @@ class Controller {
 
         
 
-        return(getTiles(4))
+        return(getTiles(9))
     }
 }
 

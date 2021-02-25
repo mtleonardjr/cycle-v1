@@ -24,20 +24,34 @@ function App() {
   }
   return (
     // <div className="app-container">
-    //   <div className='grid-container'>
-    //     <Tile data={tileData[0]}/>
-    //     <Tile data={tileData[1]}/>
-    //     <Tile data={tileData[2]}/>
-    //     <Tile data={tileData[3]}/>
+      // <div className='grid-container'>
+      //   <Tile data={tileData[0]}/>
+      //   <Tile data={tileData[1]}/>
+      //   <Tile data={tileData[2]}/>
+      //   <Tile data={tileData[3]}/>
 
-    //   </div>
+      // </div>
     //   <button className='cycle-button' onClick={cycle}>Cycle</button>
     // </div>
 
     <div className="app-container">
-      <div >
-
+      <div className='ui-container'>
+        <div className='grid-container'>
+          <Tile data={tileData[0]}/>
+          <Tile data={tileData[1]}/>
+          <Tile data={tileData[2]}/>
+          <Tile data={tileData[3]}/>
+          <Tile data={tileData[4]}/>
+          <Tile data={tileData[5]}/>
+          <Tile data={tileData[6]}/>
+          <Tile data={tileData[7]}/>
+          <Tile data={tileData[8]}/>
+        </div>
+        <div className='info-panel'>
+          <div className='info-item'>1</div>
+        </div>
       </div>
+      <button className='cycle-button' onClick={cycle}>Cycle</button>
     </div>
   );
 }
