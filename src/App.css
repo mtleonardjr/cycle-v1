@@ -14,6 +14,7 @@
   background-color: darkgrey;
 }
 
+/*
 .grid-container {
   display: grid;
   min-width: 30em;
@@ -49,3 +50,5 @@
 .cycle-button:active {
   transform: scale(0.98);
 }
+
+*/

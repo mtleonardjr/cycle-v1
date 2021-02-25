@@ -23,15 +23,21 @@ function App() {
     setTileData(controllerRes);
   }
   return (
+    // <div className="app-container">
+    //   <div className='grid-container'>
+    //     <Tile data={tileData[0]}/>
+    //     <Tile data={tileData[1]}/>
+    //     <Tile data={tileData[2]}/>
+    //     <Tile data={tileData[3]}/>
+
+    //   </div>
+    //   <button className='cycle-button' onClick={cycle}>Cycle</button>
+    // </div>
+
     <div className="app-container">
-      <div className='grid-container'>
-        <Tile data={tileData[0]}/>
-        <Tile data={tileData[1]}/>
-        <Tile data={tileData[2]}/>
-        <Tile data={tileData[3]}/>
+      <div >
 
       </div>
-      <button className='cycle-button' onClick={cycle}>Cycle</button>
     </div>
   );
 }
