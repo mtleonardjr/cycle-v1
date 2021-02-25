@@ -2,27 +2,17 @@ import './App.css';
 import Tile from './components/Tile'
 import Info from './components/Info'
 import { useState } from 'react'
-const Controller = require('./library/Controller')
+const Controller = require('./library/controller')
+const Utilities = require('./library/utilities')
 
 function App() {
 
-  const initialArray = [
-    {"surface":{"surfaceType":"land","altitude":64.934320566616,"waterLevel":60},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"organicSoil":50}},
-    {"surface":{"surfaceType":"land","altitude":64.934320566616,"waterLevel":60},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"organicSoil":50}},
-    {"surface":{"surfaceType":"land","altitude":64.934320566616,"waterLevel":60},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"organicSoil":50}},
-    {"surface":{"surfaceType":"land","altitude":64.934320566616,"waterLevel":60},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"organicSoil":50}},
-    {"surface":{"surfaceType":"land","altitude":64.934320566616,"waterLevel":60},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"organicSoil":50}},
-    {"surface":{"surfaceType":"land","altitude":64.934320566616,"waterLevel":60},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"organicSoil":50}},
-    {"surface":{"surfaceType":"land","altitude":64.934320566616,"waterLevel":60},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"organicSoil":50}},
-    {"surface":{"surfaceType":"land","altitude":64.934320566616,"waterLevel":60},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"organicSoil":50}},
-    {"surface":{"surfaceType":"land","altitude":64.934320566616,"waterLevel":60},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"organicSoil":50}},
-  ]
+  const initialArray = Utilities.createInitalArray(225)
 
   const [tileData, setTileData] = useState(initialArray) 
-  const [infoData, setInfoData] = useState(
-    {"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}}
-  ) 
+  const [infoData, setInfoData] = useState({"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}}) 
 
+  //Main Method
   const cycle = () => {
     // create a temporary copy of the State array 
     const temp = [...tileData];
@@ -39,11 +29,20 @@ function App() {
     setInfoData(data);
   }
 
+  //console.log(Utilities.createInitalArray(9));
+
   return (
     <div className="app-container">
+      <div className='header'> Header</div>
       <div className='ui-container'>
         <div className='grid-container'>
-          <Tile data={tileData[0]} getHoverData={getHoverData}/>
+
+          {tileData.map((item, index)=>{
+            return <Tile data={tileData[index]} getHoverData={getHoverData} key={index}/> 
+          })}
+
+
+          {/* <Tile data={tileData[0]} getHoverData={getHoverData}/>
           <Tile data={tileData[1]} getHoverData={getHoverData}/>
           <Tile data={tileData[2]} getHoverData={getHoverData}/>
           <Tile data={tileData[3]} getHoverData={getHoverData}/>
@@ -51,13 +50,13 @@ function App() {
           <Tile data={tileData[5]} getHoverData={getHoverData}/>
           <Tile data={tileData[6]} getHoverData={getHoverData}/>
           <Tile data={tileData[7]} getHoverData={getHoverData}/>
-          <Tile data={tileData[8]} getHoverData={getHoverData}/>
+          <Tile data={tileData[8]} getHoverData={getHoverData}/> */}
         </div>
 
-        <Info data={infoData}/>
+        <Info data={infoData} cycleFunc={cycle}/>
 
       </div>
-      <button className='cycle-button' onClick={cycle}>Cycle</button>
+      <div className='header'>Footer</div>
     </div>
   );
 }

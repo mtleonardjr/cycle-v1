@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  border: 1px solid black;
 }
 
 .app-container {
@@ -14,30 +13,35 @@
   background-color: darkgrey;
 }
 
+.header {
+  min-height: 10em;
+  width: 100%;
+  border: 1px solid black;
+}
+
 .ui-container {
   display: flex;
   height: 100%;
+  border: 3px solid black;
 }
 
 .grid-container {
   display: grid;
-  width: 60em;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 2em;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+  gap: 0;
   padding: 2em;
-  border: 3px solid black;
   background-color: darkslategrey;
 }
 
 .grid-item {
   background-color: lightgrey;
-  min-width: 0;
-  overflow: scroll;
+  min-width: 2em;
+  min-height: 2em;
 }
 
 .grid-item:hover {
-  border: 5px solid white;
+  border: 1px solid white;
 }
 
 .info-panel {
@@ -49,27 +53,33 @@
 }
 
 .info-item-container {
+  background-color: rgb(207, 252, 249);
   flex-grow: 1;
   margin-top: 10em;
+  margin: 11em 1em 1em 1em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.2);
 }
 
+.info-item-top {
+  margin-top: 5em;
+  padding: 0 1em 0;
+}
+
+.info-item {
+  padding: 0 1em 0;
+}
 .cycle-button {
-  margin: 1em;
-  background-color: white;
-  border: 3px solid black;
-  min-width: 15em;
-  min-height: 3em;
-  font-size: 2em;
+  margin: 0 1em 1em;
+  color: rgb(207, 252, 249);
+  background-color: rgb(109, 18, 18);
+  min-height: 2em;
+  font-size: 1.25em;
   cursor: pointer;
   text-decoration: none;
   outline: none;
-}
-
-.cycle-button:focus {
-  outline-color: white;
 }
 
 .cycle-button:active {

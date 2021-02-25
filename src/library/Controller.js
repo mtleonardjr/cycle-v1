@@ -39,7 +39,7 @@ class Controller {
             } else {
                 tile.surface.surfaceType = "water"
             }
-            
+
             return tile;
         }
 
@@ -53,7 +53,7 @@ class Controller {
 
         
 
-        return(getTiles(9))
+        return(getTiles(225))
     }
 }
 
