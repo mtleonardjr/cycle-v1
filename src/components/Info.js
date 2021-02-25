@@ -15,10 +15,10 @@ const Info = ({ data }) => {
         <div className='info-panel'>
             <div className='info-item-container'>
                 <div className='info-item'>Surface Type: {data.surface.surfaceType}</div>
-                <div className='info-item'>1</div>
-                <div className='info-item'>1</div>
-                <div className='info-item'>1</div>
-                <div className='info-item'>1</div>
+                <div className='info-item'>{data.surface.surfaceType === "land" ? "Altitude: " + Math.round(data.surface.altitude) : "Sea Level: " + Math.round(data.surface.waterLevel)}</div>
+                <div className='info-item'>Atmospheric Oxygen : {data.atmosphere.oxygen*100}%</div>
+                <div className='info-item'>Atmospheric Nitrogen : {data.atmosphere.nitrogen*100}%</div>
+                <div className='info-item'>Organic Matter: {data.uGround.organicSoil}</div>
             </div>
         </div>
     )
