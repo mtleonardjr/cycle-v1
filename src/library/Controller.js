@@ -15,19 +15,31 @@ class Controller {
         // console.log(temp);
 
         const createTile = () => {
+
+            // resources that can be completely absent or abundent should be ints
+            // resources that exist as a ratio should be decimal units
+
             let tile = {
                 surface: {
-                    surfaceType: "land",
-                    fertility: .5
+                    surfaceType: "",
+                    altitude: (Math.random()*40+40),
+                    waterLevel: 60
                 },
                 atmosphere: {
                     oxygen: .5,
                     nitrogen: .5
                 },
                 uGround: {
-                    waterSat: .75
+                    organicSoil: 50
                 }
             }
+
+            if(tile.surface.altitude>tile.surface.waterLevel){
+                tile.surface.surfaceType = "land"
+            } else {
+                tile.surface.surfaceType = "water"
+            }
+            
             return tile;
         }
 

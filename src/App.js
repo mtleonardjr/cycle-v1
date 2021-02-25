@@ -1,16 +1,24 @@
 import './App.css';
 import Tile from './components/Tile'
+import Info from './components/Info'
 import { useState } from 'react'
 const Controller = require('./library/Controller')
 
 function App() {
-  // const initialArray = [
-  //   {"number":1},
-  //   {"number":1},
-  //   {"number":1},
-  //   {"number":1}
-  // ]
-  const [tileData, setTileData] = useState([{key:1,num:1},{key:2,num:2},{key:3,num:3},{key:4,num:4}]) 
+
+  const initialArray = [
+    {"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}},
+    {"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}},
+    {"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}},
+    {"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}},
+    {"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}},
+    {"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}},
+    {"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}},
+    {"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}},
+    {"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}}
+  ]
+
+  const [tileData, setTileData] = useState(initialArray) 
 
   const cycle = () => {
     // create a temporary copy of the State array 
@@ -22,18 +30,8 @@ function App() {
     // Set the state to the value of the temporary array
     setTileData(controllerRes);
   }
+  
   return (
-    // <div className="app-container">
-      // <div className='grid-container'>
-      //   <Tile data={tileData[0]}/>
-      //   <Tile data={tileData[1]}/>
-      //   <Tile data={tileData[2]}/>
-      //   <Tile data={tileData[3]}/>
-
-      // </div>
-    //   <button className='cycle-button' onClick={cycle}>Cycle</button>
-    // </div>
-
     <div className="app-container">
       <div className='ui-container'>
         <div className='grid-container'>
@@ -47,9 +45,9 @@ function App() {
           <Tile data={tileData[7]}/>
           <Tile data={tileData[8]}/>
         </div>
-        <div className='info-panel'>
-          <div className='info-item'>1</div>
-        </div>
+
+        <Info data={tileData[0]}/>
+
       </div>
       <button className='cycle-button' onClick={cycle}>Cycle</button>
     </div>

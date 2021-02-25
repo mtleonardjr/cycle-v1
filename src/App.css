@@ -36,6 +36,10 @@
   overflow: scroll;
 }
 
+.grid-item:hover {
+  border: 5px solid white;
+}
+
 .info-panel {
   display: flex;
   flex-direction: column;
@@ -44,8 +48,12 @@
   justify-content: flex-start;
 }
 
-.info-item {
+.info-item-container {
+  flex-grow: 1;
   margin-top: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .cycle-button {
@@ -66,4 +74,12 @@
 
 .cycle-button:active {
   transform: scale(0.98);
+}
+
+.background-blue {
+  background-color: mediumblue;
+}
+
+.background-green {
+  background-color: green;
 }
