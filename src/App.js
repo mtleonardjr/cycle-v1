@@ -10,7 +10,7 @@ function App() {
   const initialArray = Utilities.createInitalArray(225)
 
   const [tileData, setTileData] = useState(initialArray) 
-  const [infoData, setInfoData] = useState({position:{xPos:0,yPos:0},"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}}) 
+  const [infoData, setInfoData] = useState({position:{xPos:0,yPos:0},"surface":{tectonicPlate: 1,"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}}) 
   const [gameData, setGameData] = useState({cycle: 0, worldName: "test World"})
 
   //Main Method
@@ -22,7 +22,7 @@ function App() {
 
   //Reset Method
   const reset = () => {
-    const controllerRes = Controller.reset();
+    const controllerRes = Controller.reset(15);
     setTileData(controllerRes);
   }
 

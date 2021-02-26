@@ -20,8 +20,8 @@ class Controller {
     }
 
 
-    reset(){ 
-        return(WorldBuilder.buildWorld())
+    reset(length){ 
+        return(WorldBuilder.buildWorld(length))
     }
 
     // Legacy Cycle function

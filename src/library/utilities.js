@@ -9,6 +9,7 @@ class Utilities {
                 yPos:0
             },
             surface: {
+                tectonicPlate: 1,
                 surfaceType: "land",
                 altitude: 60,
                 waterLevel: 10

@@ -17,6 +17,8 @@ const Info = ({ data, cycleFunc, resetFunc, upCycleFunc, resetCycleFunc, gameDat
                 <div className='info-item'>Atmospheric Oxygen : {data.atmosphere.oxygen*100}%</div>
                 <div className='info-item'>Atmospheric Nitrogen : {data.atmosphere.nitrogen*100}%</div>
                 <div className='info-item'>Organic Matter: {data.uGround.organicSoil}</div>
+                <div className='info-item'>Tectonic Plate: {data.surface.tectonicPlate}</div>
+                
             </div>
             <button className='cycle-button'onClick={()=>{cycleFunc(); upCycleFunc()}}>Cycle</button>
             <button className='cycle-button'onClick={()=>{resetCycleFunc(); resetFunc()}}>Reset</button>
