@@ -14,13 +14,14 @@ function App() {
 
   //Main Method
   const cycle = () => {
-    // create a temporary copy of the State array 
     const temp = [...tileData];
-
-    //Call our controller class to execute cycle functions
     const controllerRes = Controller.cycle(temp);
+    setTileData(controllerRes);
+  }
 
-    // Set the state to the value of the temporary array
+  //Reset Method
+  const reset = () => {
+    const controllerRes = Controller.reset();
     setTileData(controllerRes);
   }
 
@@ -36,25 +37,11 @@ function App() {
       <div className='header'> Header</div>
       <div className='ui-container'>
         <div className='grid-container'>
-
           {tileData.map((item, index)=>{
             return <Tile data={tileData[index]} getHoverData={getHoverData} key={index}/> 
           })}
-
-
-          {/* <Tile data={tileData[0]} getHoverData={getHoverData}/>
-          <Tile data={tileData[1]} getHoverData={getHoverData}/>
-          <Tile data={tileData[2]} getHoverData={getHoverData}/>
-          <Tile data={tileData[3]} getHoverData={getHoverData}/>
-          <Tile data={tileData[4]} getHoverData={getHoverData}/>
-          <Tile data={tileData[5]} getHoverData={getHoverData}/>
-          <Tile data={tileData[6]} getHoverData={getHoverData}/>
-          <Tile data={tileData[7]} getHoverData={getHoverData}/>
-          <Tile data={tileData[8]} getHoverData={getHoverData}/> */}
         </div>
-
-        <Info data={infoData} cycleFunc={cycle}/>
-
+        <Info data={infoData} cycleFunc={cycle} resetFunc={reset}/>
       </div>
       <div className='header'>Footer</div>
     </div>

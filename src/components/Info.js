@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Info = ({ data, cycleFunc }) => {
+const Info = ({ data, cycleFunc, resetFunc }) => {
 
     return (
         <div className='info-panel'>
@@ -12,7 +12,7 @@ const Info = ({ data, cycleFunc }) => {
                 <div className='info-item'>Organic Matter: {data.uGround.organicSoil}</div>
             </div>
             <button className='cycle-button'onClick={cycleFunc}>Cycle</button>
-            <button className='cycle-button'onClick={cycleFunc}>Cycle</button>
+            <button className='cycle-button'onClick={resetFunc}>Reset</button>
         </div>
     )
 }

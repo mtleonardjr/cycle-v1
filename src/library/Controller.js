@@ -13,12 +13,9 @@ class Controller {
 
         // logging statement
         // console.log(temp);
-
         const createTile = () => {
-
             // resources that can be completely absent or abundent should be ints
             // resources that exist as a ratio should be decimal units
-
             let tile = {
                 surface: {
                     surfaceType: "",
@@ -39,7 +36,6 @@ class Controller {
             } else {
                 tile.surface.surfaceType = "water"
             }
-
             return tile;
         }
 
@@ -50,9 +46,55 @@ class Controller {
             }
             return tileArray;
         }
+        return(getTiles(225))
+    }
 
+    reset(){ 
+        const getTiles = (num) => {
+            let tileArray = [];
+            for (let i=0;i<num;i++){
+                tileArray.push(this.createTile());
+            }
+            return tileArray;
+        }       
+        return(getTiles(225))
+    }
+
+    createTile(altitude){
+        // resources that can be completely absent or abundent should be ints
+        // resources that exist as a ratio should be decimal units
+        let tile = {
+            surface: {
+                surfaceType: "",
+                altitude: (altitude),
+                waterLevel: 50
+            },
+            atmosphere: {
+                oxygen: .5,
+                nitrogen: .5
+            },
+            uGround: {
+                organicSoil: 50
+            }
+        }
+        if(tile.surface.altitude>tile.surface.waterLevel){
+            tile.surface.surfaceType = "land"
+        } else {
+            tile.surface.surfaceType = "water"
+        }
+        return tile;
+    }
+
+    buildWorld(){ 
+
+        const getTiles = (num) => {
+            let tileArray = [];
+            for (let i=0;i<num;i++){
+                tileArray.push(this.createTile());
+            }
+            return tileArray;
+        }
         
-
         return(getTiles(225))
     }
 }
