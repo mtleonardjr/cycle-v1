@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Info = ({ data, cycleFunc, resetFunc, upCycleFunc, gameData }) => {
+const Info = ({ data, cycleFunc, resetFunc, upCycleFunc, resetCycleFunc, gameData }) => {
 
     return (
         <div className='info-panel'>
@@ -9,7 +9,7 @@ const Info = ({ data, cycleFunc, resetFunc, upCycleFunc, gameData }) => {
                 <div className='info-item'>World Name: {gameData.worldName}</div>
             </div>
             <div className='info-item-container'>
-                <div className='info-item-top'>X: {data.xPos} Y: {data.yPos}</div>
+                <div className='info-item-top'>X: {data.position.xPos} Y: {data.position.yPos}</div>
                 <div className='info-item'>Surface Type: {data.surface.surfaceType}</div>
                 {/* <div className='info-item'>{data.surface.surfaceType === "land" ? "Altitude: " + Math.round(data.surface.altitude) : "Sea Level: " + Math.round(data.surface.waterLevel)}</div> */}
                 <div className='info-item'>{"Altitude: " + Math.round(data.surface.altitude)}</div>
@@ -19,7 +19,7 @@ const Info = ({ data, cycleFunc, resetFunc, upCycleFunc, gameData }) => {
                 <div className='info-item'>Organic Matter: {data.uGround.organicSoil}</div>
             </div>
             <button className='cycle-button'onClick={()=>{cycleFunc(); upCycleFunc()}}>Cycle</button>
-            <button className='cycle-button'onClick={resetFunc}>Reset</button>
+            <button className='cycle-button'onClick={()=>{resetCycleFunc(); resetFunc()}}>Reset</button>
         </div>
     )
 }

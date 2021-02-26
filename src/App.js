@@ -13,7 +13,7 @@ function App() {
   const [infoData, setInfoData] = useState({"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}}) 
   const [gameData, setGameData] = useState({
     cycle: 0,
-    worldName: "test"
+    worldName: "test World"
   })
 
   //Main Method
@@ -41,6 +41,13 @@ function App() {
     setGameData(temp)
   }
 
+  //reset cycle count
+  const resetCycle = () => {
+    const temp = gameData;
+    temp.cycle= 0;
+    setGameData(temp)
+  }
+
   return (
     <div className="app-container">
       <div className='header'> Header</div>
@@ -50,7 +57,7 @@ function App() {
             return <Tile data={tileData[index]} getHoverData={getHoverData} key={index}/> 
           })}
         </div>
-        <Info data={infoData} cycleFunc={cycle} resetFunc={reset} upCycleFunc={upCycle} gameData={gameData}/>
+        <Info data={infoData} cycleFunc={cycle} resetFunc={reset} upCycleFunc={upCycle} resetCycleFunc={resetCycle} gameData={gameData}/>
       </div>
       <div className='header'>Footer</div>
     </div>

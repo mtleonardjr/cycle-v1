@@ -57,7 +57,7 @@
   background-color: lightyellow;
   justify-content: flex-start;
   padding-top: 1em;
-  box-shadow: inset 3px -3px 3px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .info-item-container {
@@ -67,7 +67,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  box-shadow: inset 5px -5px 15px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 1px 1px 10px 10px rgba(0, 0, 0, 0.2);
   border: 1px solid rgb(165, 165, 144);
 }
 
@@ -93,7 +93,7 @@
   cursor: pointer;
   text-decoration: none;
   outline: none;
-  box-shadow: inset 3px -3px 3px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .cycle-button:active {
