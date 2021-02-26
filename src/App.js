@@ -21,12 +21,13 @@ function App() {
 
   //Reset Method
   const reset = () => {
-    const controllerRes = Controller.reset();
+    const controllerRes = Controller.buildWorld();
     setTileData(controllerRes);
   }
 
   // get tile data from hovered tile
   const getHoverData = (data) => {
+    console.log(data.position);
     setInfoData(data);
   }
 

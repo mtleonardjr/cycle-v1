@@ -17,6 +17,10 @@ class Controller {
             // resources that can be completely absent or abundent should be ints
             // resources that exist as a ratio should be decimal units
             let tile = {
+                position:{
+                    xPos:0,
+                    yPos:0
+                },
                 surface: {
                     surfaceType: "",
                     altitude: (Math.random()*40+40),
@@ -64,10 +68,14 @@ class Controller {
         // resources that can be completely absent or abundent should be ints
         // resources that exist as a ratio should be decimal units
         let tile = {
+            position:{
+                xPos:0,
+                yPos:0
+            },
             surface: {
                 surfaceType: "",
                 altitude: (altitude),
-                waterLevel: 50
+                waterLevel: 10
             },
             atmosphere: {
                 oxygen: .5,
@@ -90,12 +98,14 @@ class Controller {
         const getTiles = (num) => {
             let tileArray = [];
             for (let i=0;i<num;i++){
-                tileArray.push(this.createTile());
+                tileArray.push(this.createTile(0));
             }
             return tileArray;
         }
         
-        return(getTiles(225))
+        let worldArray = getTiles(225);
+
+        return(worldArray)
     }
 }
 
