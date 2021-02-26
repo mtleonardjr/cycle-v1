@@ -1,7 +1,13 @@
+@font-face {
+  font-family: "slkscre";
+  src: local("slkscre"), url(./fonts/slkscre.ttf) format("truetype");
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: slkscre, serif;
 }
 
 .app-container {
@@ -50,26 +56,33 @@
   min-width: 10em;
   background-color: lightyellow;
   justify-content: flex-start;
+  padding-top: 1em;
+  box-shadow: inset 3px -3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .info-item-container {
   background-color: rgb(207, 252, 249);
   flex-grow: 1;
-  margin-top: 10em;
-  margin: 11em 1em 1em 1em;
+  margin: 0em 1em 1em 1em;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 5px -5px 15px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgb(165, 165, 144);
 }
 
 .info-item-top {
-  margin-top: 3em;
-  padding: 0 1em 0;
+  margin-top: 2em;
+  padding: 0 2em 0;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 .info-item {
-  padding: 0 1em 0;
+  padding: 0 2em 0;
+  margin-top: 0.2em;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 .cycle-button {
   margin: 0 1em 1em;
@@ -80,6 +93,7 @@
   cursor: pointer;
   text-decoration: none;
   outline: none;
+  box-shadow: inset 3px -3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .cycle-button:active {

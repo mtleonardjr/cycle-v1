@@ -11,6 +11,10 @@ function App() {
 
   const [tileData, setTileData] = useState(initialArray) 
   const [infoData, setInfoData] = useState({"surface":{"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}}) 
+  const [gameData, setGameData] = useState({
+    cycle: 0,
+    worldName: "test"
+  })
 
   //Main Method
   const cycle = () => {
@@ -27,11 +31,15 @@ function App() {
 
   // get tile data from hovered tile
   const getHoverData = (data) => {
-    console.log(data.position);
     setInfoData(data);
   }
 
-  //console.log(Utilities.createInitalArray(9));
+  //increase cycle count
+  const upCycle = () => {
+    const temp = gameData;
+    temp.cycle++;
+    setGameData(temp)
+  }
 
   return (
     <div className="app-container">
@@ -42,7 +50,7 @@ function App() {
             return <Tile data={tileData[index]} getHoverData={getHoverData} key={index}/> 
           })}
         </div>
-        <Info data={infoData} cycleFunc={cycle} resetFunc={reset}/>
+        <Info data={infoData} cycleFunc={cycle} resetFunc={reset} upCycleFunc={upCycle} gameData={gameData}/>
       </div>
       <div className='header'>Footer</div>
     </div>
