@@ -1,3 +1,5 @@
+const WorldBuilder = require('./world-builder');
+
 class Controller {
 
     cycle(tileData){ 
@@ -17,59 +19,9 @@ class Controller {
         return temp;
     }
 
+
     reset(){ 
-        const getTiles = (num) => {
-            let tileArray = [];
-            for (let i=0;i<num;i++){
-                tileArray.push(this.createTile());
-            }
-            return tileArray;
-        }       
-        return(getTiles(225))
-    }
-
-    createTile(altitude){
-        // resources that can be completely absent or abundent should be ints
-        // resources that exist as a ratio should be decimal units
-        let tile = {
-            position:{
-                xPos:0,
-                yPos:0
-            },
-            surface: {
-                surfaceType: "",
-                altitude: (altitude),
-                waterLevel: 10
-            },
-            atmosphere: {
-                oxygen: .5,
-                nitrogen: .5
-            },
-            uGround: {
-                organicSoil: 50
-            }
-        }
-        if(tile.surface.altitude>tile.surface.waterLevel){
-            tile.surface.surfaceType = "land"
-        } else {
-            tile.surface.surfaceType = "water"
-        }
-        return tile;
-    }
-
-    buildWorld(){ 
-
-        const getTiles = (num) => {
-            let tileArray = [];
-            for (let i=0;i<num;i++){
-                tileArray.push(this.createTile(0));
-            }
-            return tileArray;
-        }
-        
-        let worldArray = getTiles(225);
-
-        return(worldArray)
+        return(WorldBuilder.buildWorld())
     }
 
     // Legacy Cycle function
