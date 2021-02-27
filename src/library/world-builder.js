@@ -6,9 +6,50 @@ class WorldBuilder{
         let worldArray = this.getTiles(length);
 
         //Build Plates return verticy pairs
-        let platedArray = this.getPlates(length, worldArray)
+        worldArray = this.getPlates(length, worldArray)
         // console.log(platePairs)
-        return(platedArray)
+
+        //Add Hot Spot Mountains
+        worldArray = this.addHSRange(worldArray);
+
+        //designates between land and sea
+        worldArray.forEach((object,index)=>{
+            if(object.surface.altitude>object.surface.waterLevel){
+                object.surface.surfaceType = "land"
+            } else {
+                object.surface.surfaceType = "water"
+            }
+        })
+        return(worldArray)
+    }
+
+    addHSRange(worldArray) {
+        let tempArray = [...worldArray];
+        let hsCoords = [];
+
+        worldArray.forEach((object,index)=>{
+            if (object.uGround.seismicActivity) {
+                hsCoords.push([object])
+                console.log(object)
+            }
+        })
+
+        // let testvar = hsCoords[0]
+        
+        // hsCoords.forEach((object,index)=>{
+        //     let x = object[0];
+        //     let y = object[1];
+
+        //     let foundIndex = worldArray.findIndex(elem => 
+        //         elem.position.xPos === x && elem.position.yPos === y
+        //     )
+
+        //     let seismicActivity = worldArray[foundIndex].uGround.seismicActivity;
+
+        //     console.log(seismicActivity)
+        // })
+
+        return tempArray
     }
     
     getPlates(length, worldArray) {
@@ -46,9 +87,73 @@ class WorldBuilder{
                 }
             }
         })
+
+        
+        //Plate 1
+        // x = Math.floor(Math.random()*(firstX)+1)
+        // y = Math.floor(Math.random()*(firstY)+1)
+        // foundIndex = tempArray.findIndex(elem => 
+        //     elem.position.xPos === x && elem.position.yPos === y
+        // )
+        // tempArray[foundIndex].uGround.seismicActivity = "hot spot";
+        // tempArray[foundIndex].surface.altitude = Math.random()*11+90;
+
+        // //Plate 2
+        // x = Math.floor(Math.random() * (secondX - firstX + 1)) + firstX;
+        // y = Math.floor(Math.random() * (firstY - 1 + 1)) + 1;
+        // foundIndex = tempArray.findIndex(elem => 
+        //     elem.position.xPos === x && elem.position.yPos === y
+        // )
+        // tempArray[foundIndex].uGround.seismicActivity = "hot spot";
+        // tempArray[foundIndex].surface.altitude = Math.random()*11+90;
+
+        //first plate
+        this.getHotSpots(1,1,firstX,firstY, tempArray);
+
+        //second plate
+        this.getHotSpots(firstX+1,firstY,secondX,firstY, tempArray);
+
+        //3 plate
+        this.getHotSpots(secondX+1,firstY,length,firstY, tempArray);
+
+        //4 plate
+        this.getHotSpots(1,firstY+1,firstX,secondY, tempArray);
+
+        //5 plate
+        this.getHotSpots(firstX+1,firstY+1,secondX,secondY, tempArray);
+
+        //6 plate
+        this.getHotSpots(secondX+1,firstY+1,length,secondY, tempArray);
+
+        //7 plate
+        this.getHotSpots(1,secondY+1,firstX,length, tempArray);
+
+        //8 plate
+        this.getHotSpots(firstX+1,secondY+1,secondX,length, tempArray);
+
+        //9 plate
+        this.getHotSpots(secondX+1,secondY+1,length,length, tempArray);
+
+
+
+
+
+
         return tempArray
     }
-    
+
+    getHotSpots = (x1,y1,x2,y2, array) => {
+        let x, y, foundIndex;
+        x = Math.floor(Math.random() * (x2 - x1 + 1)) + x1;
+        y = Math.floor(Math.random() * (y2 - y1 + 1)) + y1;
+        foundIndex = array.findIndex(elem => 
+            elem.position.xPos === x && elem.position.yPos === y
+        )
+        array[foundIndex].uGround.seismicActivity = "hot spot";
+        array[foundIndex].uGround.plateDirection = Math.floor(Math.random()*4);
+        array[foundIndex].surface.altitude = Math.random()*11+90;
+    }
+
     getTiles = (length) => {
         let tileArray = [];
         let tileCount = length*length;
@@ -85,11 +190,6 @@ class WorldBuilder{
             uGround: {
                 organicSoil: 50
             }
-        }
-        if(tile.surface.altitude>tile.surface.waterLevel){
-            tile.surface.surfaceType = "land"
-        } else {
-            tile.surface.surfaceType = "water"
         }
         return tile;
     }
