@@ -24,32 +24,68 @@ class WorldBuilder{
     }
 
     addHSRange(worldArray) {
-        let tempArray = [...worldArray];
+        // let tempArray = [...worldArray];
         let hsCoords = [];
 
         worldArray.forEach((object,index)=>{
             if (object.uGround.seismicActivity) {
-                hsCoords.push([object])
-                console.log(object)
+                hsCoords.push(object)
+                // console.log(object)
             }
         })
 
         // let testvar = hsCoords[0]
         
-        // hsCoords.forEach((object,index)=>{
-        //     let x = object[0];
-        //     let y = object[1];
+        hsCoords.forEach((object,index)=>{
+            let rangeCoords = [];
+            let x,y;
 
-        //     let foundIndex = worldArray.findIndex(elem => 
-        //         elem.position.xPos === x && elem.position.yPos === y
-        //     )
+            if (object.uGround.plateDirection === 0) {
+                //Down movement
+                if (object.position.yPos === 1) {
+                    y = object.position.yPos;
+                } else {
+                    y = object.position.yPos -1;
+                }
+                x = object.position.xPos;
+                rangeCoords.push([x,y])
+            } else if (object.uGround.plateDirection === 1) {
+                //Left movement
+                if (object.position.xPos === 1) {
+                    x = object.position.xPos;
+                } else {
+                    x = object.position.xPos -1;
+                }
+                y = object.position.yPos;
+                rangeCoords.push([x,y])
+            } else if (object.uGround.plateDirection === 2) {
+                //Up movement
+                if (object.position.yPos === 15) {
+                    y = object.position.yPos;
+                } else {
+                    y = object.position.yPos + 1;
+                }
+                x = object.position.xPos;
+                rangeCoords.push([x,y])
+            } else if (object.uGround.plateDirection === 3) {
+                //Right movement
+                if (object.position.xPos === 15) {
+                    x = object.position.xPos;
+                } else {
+                    x = object.position.xPos + 1;
+                }
+                y = object.position.yPos;
+                rangeCoords.push([x,y])
+            }
 
-        //     let seismicActivity = worldArray[foundIndex].uGround.seismicActivity;
+            let foundIndex = worldArray.findIndex(elem => 
+                elem.position.xPos === rangeCoords[0][0] && elem.position.yPos === rangeCoords[0][1]
+            )
 
-        //     console.log(seismicActivity)
-        // })
+            worldArray[foundIndex].surface.altitude = Math.random()*11+90;
+        })
 
-        return tempArray
+        return worldArray
     }
     
     getPlates(length, worldArray) {
