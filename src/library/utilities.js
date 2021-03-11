@@ -4,6 +4,7 @@ class Utilities {
         let iArray = [];
         for(let i=0; i<length; i++) {
           iArray.push({
+            tileId: i, 
             position:{
                 xPos:0,
                 yPos:0
