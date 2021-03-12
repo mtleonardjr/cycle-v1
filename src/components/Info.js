@@ -7,9 +7,10 @@ const Info = ({ data, cycleFunc, resetFunc, upCycleFunc, resetCycleFunc, gameDat
             <div className='info-item-container'>
                 <div className='info-item-top'>Cycle: {gameData.cycle}</div>
                 <div className='info-item'>World Name: {gameData.worldName}</div>
+                <div className='info-item'>Selected: {gameData.selected}</div>
             </div>
             <div className='info-item-container'>
-                <div className='info-item-top'>X: {data.position.xPos} Y: {data.position.yPos}</div>
+                <div className='info-item-top'>X: {data.position.xPos} Y: {data.position.yPos} Index: {data.tileId}</div>
                 <div className='info-item'>Surface Type: {data.surface.surfaceType}</div>
                 {/* <div className='info-item'>{data.surface.surfaceType === "land" ? "Altitude: " + Math.round(data.surface.altitude) : "Sea Level: " + Math.round(data.surface.waterLevel)}</div> */}
                 <div className='info-item'>{"Altitude: " + Math.round(data.surface.altitude)}</div>

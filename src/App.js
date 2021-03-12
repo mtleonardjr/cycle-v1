@@ -11,7 +11,7 @@ function App() {
 
   const [tileData, setTileData] = useState(initialArray) 
   const [infoData, setInfoData] = useState({position:{xPos:0,yPos:0},"surface":{tectonicPlate: 1,"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}}) 
-  const [gameData, setGameData] = useState({cycle: 0, worldName: "test World"})
+  const [gameData, setGameData] = useState({cycle: 0, worldName: "Test World", selected: [99]})
 
   //Main Method
   const cycle = () => {
@@ -29,6 +29,8 @@ function App() {
   // get tile data from hovered tile
   const getHoverData = (data) => {
     setInfoData(data);
+    setGameData({...gameData, selected: [data.tileId]})
+    console.log(data.tileId);
   }
 
   //increase cycle count
@@ -51,7 +53,7 @@ function App() {
       <div className='ui-container'>
         <div className='grid-container'>
           {tileData.map((item, index)=>{
-            return <Tile data={tileData[index]} getHoverData={getHoverData} key={index}/> 
+            return <Tile data={tileData[index]} getHoverData={getHoverData} key={index} gameData={gameData}/> 
           })}
         </div>
         <Info data={infoData} cycleFunc={cycle} resetFunc={reset} upCycleFunc={upCycle} resetCycleFunc={resetCycle} gameData={gameData}/>
