@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Info = ({ data, cycleFunc, resetFunc, buildFunc, upCycleFunc, resetCycleFunc, gameData }) => {
+const Info = ({ data, cycleFunc, resetFunc, buildFunc, toggleFunc, resetCycleFunc, gameData }) => {
 
     return (
         <div className='info-panel'>
@@ -22,10 +22,10 @@ const Info = ({ data, cycleFunc, resetFunc, buildFunc, upCycleFunc, resetCycleFu
                 
             </div>
             <div className='cycle-button-container'>
-                <button className='cycle-button'onClick={()=>{cycleFunc(); upCycleFunc()}}>Cycle</button>
+                <button className='cycle-button'onClick={()=>{cycleFunc();}}>Cycle</button>
                 <button className='cycle-button'onClick={()=>{resetCycleFunc(); resetFunc()}}>Reset</button>
                 <button className='cycle-button'onClick={()=>{resetCycleFunc(); buildFunc()}}>Build</button>
-                <button className='cycle-button'onClick={()=>{}}>Blank</button>
+                <button className='cycle-button'onClick={()=>{toggleFunc();}}>Toggle</button>
                 <button className='cycle-button'onClick={()=>{}}>Blank</button>
             </div>
 
