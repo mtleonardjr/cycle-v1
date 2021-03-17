@@ -198,17 +198,18 @@ class WorldBuilder{
 
         for (let i=0;i<tileCount;i++){
 
-            tileArray.push(this.createTile(xCount%length, Math.floor(yCount/15), 0));
+            tileArray.push(this.createTile(xCount%length, Math.floor(yCount/15), 0, i));
             xCount++;
             yCount--
         }
         return tileArray;
     }
 
-    createTile(xValue, yValue, altitude){
+    createTile(xValue, yValue, altitude, i){
         // resources that can be completely absent or abundent should be ints
         // resources that exist as a ratio should be decimal units
         let tile = {
+            tileId: i, 
             position:{
                 xPos:xValue+1,
                 yPos:yValue+1
