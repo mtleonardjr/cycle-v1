@@ -1,8 +1,9 @@
 class Utilities {
 
     createInitalArray(length) {
+        let tileCount = length*length
         let iArray = [];
-        for(let i=0; i<length; i++) {
+        for(let i=0; i<tileCount; i++) {
           iArray.push({
             tileId: i, 
             position:{

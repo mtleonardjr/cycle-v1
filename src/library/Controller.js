@@ -1,4 +1,5 @@
 const WorldBuilder = require('./world-builder');
+const Utilities = require('./utilities');
 
 class Controller {
 
@@ -21,6 +22,10 @@ class Controller {
 
 
     reset(length){ 
+        return(Utilities.createInitalArray(length))
+    }
+
+    buildWorld(length) {
         return(WorldBuilder.buildWorld(length))
     }
 

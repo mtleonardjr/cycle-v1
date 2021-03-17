@@ -84,8 +84,13 @@
   font-weight: bold;
   font-size: 1.1em;
 }
-.cycle-button {
+
+.cycle-button-container {
+  display: flex;
   margin: 0 1em 1em;
+}
+
+.cycle-button {
   color: rgb(207, 252, 249);
   background-color: rgb(109, 18, 18);
   min-height: 2em;

@@ -7,7 +7,7 @@ const Utilities = require('./library/utilities')
 
 function App() {
 
-  const initialArray = Utilities.createInitalArray(225)
+  const initialArray = Utilities.createInitalArray(15)
 
   const [tileData, setTileData] = useState(initialArray) 
   const [infoData, setInfoData] = useState({position:{xPos:0,yPos:0},"surface":{tectonicPlate: 1,"surfaceType":"land","fertility":0.5},"atmosphere":{"oxygen":0.5,"nitrogen":0.5},"uGround":{"waterSat":0.75}}) 
@@ -23,6 +23,12 @@ function App() {
   //Reset Method
   const reset = () => {
     const controllerRes = Controller.reset(15);
+    setTileData(controllerRes);
+  }
+
+  //Build World Method
+  const build = () => {
+    const controllerRes = Controller.buildWorld(15);
     setTileData(controllerRes);
   }
 
@@ -56,7 +62,7 @@ function App() {
             return <Tile data={tileData[index]} getHoverData={getHoverData} key={index} gameData={gameData}/> 
           })}
         </div>
-        <Info data={infoData} cycleFunc={cycle} resetFunc={reset} upCycleFunc={upCycle} resetCycleFunc={resetCycle} gameData={gameData}/>
+        <Info data={infoData} cycleFunc={cycle} resetFunc={reset} buildFunc={build} upCycleFunc={upCycle} resetCycleFunc={resetCycle} gameData={gameData}/>
       </div>
       <div className='header'>Footer</div>
     </div>
