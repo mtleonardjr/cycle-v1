@@ -1,17 +1,32 @@
 import React from 'react'
 
-const Tile = ({ data, getHoverData, gameData }) => {
+const Tile = ({ data, getClickData, gameData }) => {
 
-    const hover = () => {
-        getHoverData(data);
+    const click = () => {
+        getClickData(data);
+    }
+
+    const determineClass = () => {
+        let className = 'grid-item';
+
+        //Determines if selected
+        if(gameData.selected[0] === data.tileId){
+            className = className + ' selected';
+        }
+        
+        //Determines if land or water
+        if(data.surface.surfaceType==='water'){
+            className = className + ' background-blue';
+        } else {
+            className = className + ' background-green';
+        }
+        return className
     }
 
     return (
-        //<div className='grid-item' id='grid-item-one'>{JSON.stringify(data)}</div>
-
         <div 
-            className={ gameData.selected[0] === data.tileId ? 'grid-item background-white' : data.surface.surfaceType==='water' ? 'grid-item background-blue' : 'grid-item background-green'}
-            onMouseDown={hover}> 
+            className={determineClass()}
+            onMouseDown={click}> 
         </div>
     )
 
