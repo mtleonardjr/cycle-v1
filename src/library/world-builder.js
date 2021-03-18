@@ -5,12 +5,14 @@ class WorldBuilder{
         //Build Base Array
         let worldArray = this.getTiles(length);
 
-        //Build Plates return verticy pairs
+        //Build Plates
         worldArray = this.getPlates(length, worldArray)
-        // console.log(platePairs)
 
         //Add Hot Spot Mountains
         worldArray = this.addHSRange(worldArray);
+
+        //Surround Mountains with land
+        worldArray = this.addLand(worldArray)
 
         //designates between land and sea
         worldArray.forEach((object,index)=>{
@@ -21,6 +23,25 @@ class WorldBuilder{
             }
         })
         return(worldArray)
+    }
+
+    addLand(worldArray) {
+        let currentLand = [];
+
+        worldArray.forEach((object,index)=>{
+            if(object.surface.altitude>object.surface.waterLevel){
+                currentLand.push(object)
+            }
+        })
+
+        currentLand.forEach((object,index) => {
+            let targetIndex = object.tileId -15;
+            if (targetIndex >= 0) {
+                worldArray[targetIndex].surface.altitude += 50;
+            }
+        })
+
+        return worldArray;
     }
 
     addHSRange(worldArray) {
